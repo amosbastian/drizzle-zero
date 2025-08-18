@@ -1,0 +1,12 @@
+{
+  "include": ["**/*.ts", "**/*.tsx"],
+  "extends": ["@acme/typescript/dom.json", "@acme/typescript/react.json"],
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@acme/zero",
+  "version": "0.0.0",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/mutators/client.d.ts",
+      "default": "./dist/mutators/client.js"
+    },
+    "./server": {
+      "types": "./dist/mutators/server.d.ts",
+      "default": "./dist/mutators/server.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "bun run rm -rf dist *.tsbuildinfo",
+    "typecheck": "tsc",
+    "dev": "tsc -w -p tsconfig.build.json",
+    "zero:generate": "drizzle-zero generate --config ./src/drizzle-zero.config.ts --format --output src/schema.ts"
+  },
+  "dependencies": {
+    "@acme/db": "workspace:*",
+    "@rocicorp/zero": "0.22.2025081300"
+  },
+  "devDependencies": {
+    "@acme/eslint": "workspace:*",
+    "@acme/typescript": "workspace:*",
+    "@types/node": "24.3.0",
+    "drizzle-zero": "0.13.3",
+    "eslint": "9.33.0"
+  }
+}

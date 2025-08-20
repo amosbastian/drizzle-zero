@@ -27,6 +27,9 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@rocicorp/zero-sqlite3"
-    ]
+    ],
+    "patchedDependencies": {
+      "drizzle-zero": "patches/drizzle-zero.patch"
+    }
   }
 }

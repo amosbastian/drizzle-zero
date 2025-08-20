@@ -1,0 +1,19 @@
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index af1d40611e2aa3005d7fa7de808e26a4aabc0022..c23e99c39a9f593e08ac537f6bc58558e336fcdc 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -196,11 +196,11 @@ type ZeroColumns<TTable extends Table, TColumnConfig extends ColumnsConfig<TTabl
+ /**
+  * Represents the underlying schema for a Zero table.
+  */
+-type ZeroTableBuilderSchema<TTableName extends string, TTable extends Table, TColumnConfig extends ColumnsConfig<TTable> | undefined> = {
++type ZeroTableBuilderSchema<TTableName extends string, TTable extends Table, TColumnConfig extends ColumnsConfig<TTable> | undefined> = Flatten<{
+     name: TTableName;
+     primaryKey: FindPrimaryKeyFromTable<TTable> extends [never] ? readonly [string, ...string[]] : readonly [string, ...string[]] & FindPrimaryKeyFromTable<TTable>;
+-    columns: ZeroColumns<TTable, TColumnConfig>;
+-};
++    columns: Flatten<ZeroColumns<TTable, TColumnConfig>>;
++}>;
+ /**
+  * Represents the complete Zero schema for a Drizzle table.
+  */
